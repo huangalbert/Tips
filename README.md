@@ -17,4 +17,4 @@
 ## React Router
 1. 頁面傳值有三個方法： 1. props.params, 2. query, 3. state --[1](https://blog.csdn.net/qq_23158083/article/details/68488831)
 
-> 文章說明query方法類似get，會並接url，而state類似post，不會已明文傳遞，但不知原因為和，實際使用兩者的url都沒有顯示，還是推薦使用state。
+> 文章說明query方法類似get，會併接url，而state類似post，不會以明文傳遞，但不知原因為何，實際使用兩者的url都沒有顯示，還是推薦使用state。
