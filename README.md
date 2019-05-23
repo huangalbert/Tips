@@ -14,6 +14,12 @@
 
 > 習慣必須養成不要直接調用props、state，需另創一個物件，如:const arr = [...this.state.array]
 
+4. 在react中如果function想要傳遞參數，有兩種方法 [1]onClick={()=>this.myFunction(params)}, [2]onClick={this.myFunction.bind(this,params)} --[詳解arrow function in react](https://frontarm.com/james-k-nelson/when-to-use-arrow-functions/)
+
+> 由於兩種方法都會創造新的函數，如果在render()中使用，每次重新render都會重新創造函數，會造成些許的效能問題
+
+> 如果是用這兩種方法傳遞給child component 或 purecomponent，由於每次都創造新的函數，會使得purecomponent失效，解法如下[1](https://stackoverflow.com/questions/39226757/react-passing-parameter-with-arrow-function-in-child-component)
+
 ## React Router
 1. 頁面傳值有三個方法： 1. props.params, 2. query, 3. state --[1](https://blog.csdn.net/qq_23158083/article/details/68488831)
 
