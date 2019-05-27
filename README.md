@@ -18,9 +18,14 @@
 
 > 由於兩種方法都會創造新的函數，如果在render()中使用，每次重新render都會重新創造函數，會造成些許的效能問題
 
-> 如果是用這兩種方法傳遞給child component 或 purecomponent，由於每次都創造新的函數，會使得purecomponent失效，解法如下[1](https://stackoverflow.com/questions/39226757/react-passing-parameter-with-arrow-function-in-child-component)
+> 如果是用這兩種方法傳遞給child component 或 purecomponent，由於每次都創造新的函數，會使得purecomponent失效，解法如下-[1](https://stackoverflow.com/questions/39226757/react-passing-parameter-with-arrow-function-in-child-component)
 
 ## React Router
 1. 頁面傳值有三個方法： 1. props.params, 2. query, 3. state --[1](https://blog.csdn.net/qq_23158083/article/details/68488831)
 
 > 文章說明query方法類似get，會併接url，而state類似post，不會以明文傳遞，但不知原因為何，實際使用兩者的url都沒有顯示，還是推薦使用state。
+
+## Axios
+1. 在IE中使用axios，安裝babel-polyfill，在import時必須擺在第一個。
+
+> 由於IE沒支援promise語法，需要使用額外套件編譯。
