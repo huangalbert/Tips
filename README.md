@@ -10,7 +10,7 @@
 
 > 比對前後props、state是否有改變，沒有改變shouldComponentUpdate會return false，則物件不會再次執行render()
 
-3. 由於Immutable data structures的關係，使用PureComponent的shallowEqual可能會出錯，所以在setState之前，不能直接引用props或state，必須創建一個新的物件 -- [1](https://blog.techbridge.cc/2018/01/05/react-render-optimization/)
+3. 由於Immutable data structures的關係，使用PureComponent的shallowEqual可能會出錯(不如預期)，所以在setState之前，不能直接引用props或state，必須創建一個新的物件 -- [1](https://blog.techbridge.cc/2018/01/05/react-render-optimization/)
 
 > 習慣必須養成不要直接調用props、state，需另創一個物件，如:const arr = [...this.state.array]
 
@@ -19,6 +19,11 @@
 > 由於兩種方法都會創造新的函數，如果在render()中使用，每次重新render都會重新創造函數，會造成些許的效能問題
 
 > 如果是用這兩種方法傳遞給child component 或 purecomponent，由於每次都創造新的函數，會使得purecomponent失效，解法如下-[1](https://stackoverflow.com/questions/39226757/react-passing-parameter-with-arrow-function-in-child-component)
+
+5. 卸除component時(componentWillUnmount階段)，不要有setState()的執行
+
+> 雖然有此情況不會造成程式崩壞，但會有warning，本次經驗是在使用者請求資料後，突然放棄等候而跳頁產生。
+
 
 ## React Router
 1. 頁面傳值有三個方法： 1. props.params, 2. query, 3. state --[1](https://blog.csdn.net/qq_23158083/article/details/68488831)
