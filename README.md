@@ -30,6 +30,8 @@
 
 6. 承5，必須在componentWillUnmount階段剔除listener或者setInerval等等--[1](https://www.robinwieruch.de/react-warning-cant-call-setstate-on-an-unmounted-component/)
 
+7. 
+
 ## React Router
 1. 頁面傳值有三個方法： 1. props.params, 2. query, 3. state --[1](https://blog.csdn.net/qq_23158083/article/details/68488831)
 
@@ -54,7 +56,7 @@
 
 > Callback Hell : 大量使用非同步且又想要依照固定的順序來執行時， 就可能會出現
 
-> 使用promise語法來避免callback hell
+> 使用promise語法來避免callback hell --[1 promise語法使用概念](https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/148940/)
 
 4. 非侵入式javascript --[1](https://segmentfault.com/a/1190000008820759)
 
@@ -82,7 +84,11 @@
 
 > return false也能有同樣效果
 
+10. rest operate &　spread orperate --[1](https://pjchender.blogspot.com/2017/01/es6-spread-operatorrest-operator.html)
 
+11. lodash & lazy 提升js程式碼可維護性、效能。
+
+> 注意不要過早優化程式效能，初期開發階段，可維護性、可讀性、可測試性更為重要。
 
 
 
