@@ -62,11 +62,11 @@
 
 > 這樣的寫法可以分離HTML與javascript，達成視圖與邏輯分離的架構，程式碼便不會全部混雜在一起。但如此一來，單看HTML的element無法知道他被綁定了甚麼事件，必須要去查詢js document中的所有監聽事件。
 
-> React 中的 JSX寫法反其道而行，將兩者互相結合，將component合適的切割分層，程式碼便不會看起來混亂。
+> React 中的 JSX寫法反其道而行，兩者互相結合，將component合適的切割分層，程式碼便不會看起來混亂。
 
-5. call by value? call by reference? --[1](https://ithelp.ithome.com.tw/articles/10191057)
+5. Pass by value、 Pass by reference 、Pass by sharing(scope的關係) --[1](https://ithelp.ithome.com.tw/articles/10191057)
 
-> 物件可變，基本型不可變
+> 物件、陣列可變，基本型不可變
 
 6. 事件的註冊綁定-[1] on-event(HTML屬性), [2] on-event (非HTML屬性), [3] EventTarget.addEventListener()
 
@@ -90,8 +90,13 @@
 
 > 注意不要過早優化程式效能，初期開發階段，可維護性、可讀性、可測試性更為重要。
 
+12. clean code for js --[1](https://github.com/ryanmcdermott/clean-code-javascript#use-promises-not-callbacks)
 
+13. map & reduce --[1](http://fred-zone.blogspot.com/2017/01/javascript-mapreduce.html)
 
+#moment.js
+
+1. moment.js 函數整理(中文) --[1](https://my.oschina.net/Tsybius2014/blog/724293)
 
 
 
