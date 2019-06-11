@@ -96,9 +96,9 @@
 
 #moment.js
 
-1. moment.js 函數整理(中文) --[1](https://my.oschina.net/Tsybius2014/blog/724293)
+1. moment.js 函數整理(中文) --[1](https://my.oschina.net/Tsybius2014/blog/724293) 中文文檔--[2](https://itbilu.com/nodejs/npm/VkCir3rge.html)
 
-
+> locale i18n
 
 
 
