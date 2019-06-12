@@ -30,7 +30,9 @@
 
 6. 承5，必須在componentWillUnmount階段剔除listener或者setInerval等等--[1](https://www.robinwieruch.de/react-warning-cant-call-setstate-on-an-unmounted-component/)
 
-7. 
+7. 組件的復用--[1](https://segmentfault.com/a/1190000015007317) --[2](https://juejin.im/post/5c7244b66fb9a049e93d5c16#comment)
+
+> 需要才加載--[3](https://juejin.im/post/5ad5bc306fb9a028b92da563)
 
 ## React Router
 1. 頁面傳值有三個方法： 1. props.params, 2. query, 3. state --[1](https://blog.csdn.net/qq_23158083/article/details/68488831)
