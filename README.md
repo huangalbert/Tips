@@ -44,6 +44,10 @@
 
 > 由於IE沒支援promise語法，需要使用額外套件編譯。
 
+2. 在cancel request的時候，使用 cancelToken: new CancelToken(function(cancel){})，必須注意post的cancel必須寫在config中。 --[1](https://stackoverflow.com/questions/44852054/cant-cancel-axios-post-request-via-canceltoken)
+
+> axios 文檔中寫道: axios.get(url[, config]) , axios.post(url[, data[, config]])，在post的config須注意是第二個參數。
+
 ## javascript
 
 1. 提升(Hoisting)，若是某行程式碼需要取得的變數宣告在其後執行，編譯器會自動幫程式碼在最上頭加上var x，此時值為undefined，直到程式執行給值那行--[1](https://ithelp.ithome.com.tw/articles/10191549)
@@ -96,7 +100,7 @@
 
 13. map & reduce --[1](http://fred-zone.blogspot.com/2017/01/javascript-mapreduce.html)
 
-#moment.js
+### moment.js
 
 1. moment.js 函數整理(中文) --[1](https://my.oschina.net/Tsybius2014/blog/724293) 中文文檔--[2](https://itbilu.com/nodejs/npm/VkCir3rge.html)
 
