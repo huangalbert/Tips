@@ -104,6 +104,24 @@
 
 13. map & reduce --[1](http://fred-zone.blogspot.com/2017/01/javascript-mapreduce.html)
 
+14. Property descriptor --[1](https://ithelp.ithome.com.tw/articles/10193747)
+
+> 屬性描述器:value, writable, enumerable, configurable, get, set。
+
+> Object.defineProperty(obj, prop, descriptor), Object.getOwnPropertyDescriptor()
+
+15. Prototype --[iT邦幫忙](https://ithelp.ithome.com.tw/articles/10194154) [2](https://ithelp.ithome.com.tw/articles/10194356)
+
+> A instanceof B , 'xxx' in A; 透過「原型鏈」檢查屬性, A.hasOwnProperty('xxx'); 檢查的屬性，是否為「物件本身」所有; 
+
+> Object.prototype.hasOwnProperty(), Object.prototype.toString(), Object.prototype.valueOf()
+
+> Object.setPrototypeOf(A, B), 被當作原型的物件只能唯一(__proto__)。
+
+> 當物件實體與它的原型同時擁有同樣的屬性或方法時，會優先存取自己的屬性或方法，如果沒有才會再順著原型鏈向上尋找。
+
+
+
 ### moment.js
 
 1. moment.js 函數整理(中文) --[1](https://my.oschina.net/Tsybius2014/blog/724293) 中文文檔--[2](https://itbilu.com/nodejs/npm/VkCir3rge.html)
