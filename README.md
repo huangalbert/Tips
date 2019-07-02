@@ -80,7 +80,7 @@
 
 6. 事件的註冊綁定-[1] on-event(HTML屬性), [2] on-event (非HTML屬性), [3] EventTarget.addEventListener()
 
-7. event capturing & event bubbling (event flow)--[1](https://ithelp.ithome.com.tw/articles/10191970)
+7. event capturing & event bubbling (event flow)--[1](https://ithelp.ithome.com.tw/articles/10191970) [2 huli's](https://github.com/aszx87410/blog/issues/21)
 
 > 必須深刻了解其傳遞方式
 
@@ -110,9 +110,9 @@
 
 > Object.defineProperty(obj, prop, descriptor), Object.getOwnPropertyDescriptor()
 
-15. Prototype --[iT邦幫忙](https://ithelp.ithome.com.tw/articles/10194154) [2](https://ithelp.ithome.com.tw/articles/10194356)
+15. Prototype --[iT邦幫忙1](https://ithelp.ithome.com.tw/articles/10194154) [iT邦幫忙2](https://ithelp.ithome.com.tw/articles/10194356)
 
-> A instanceof B , 'xxx' in A; 透過「原型鏈」檢查屬性, A.hasOwnProperty('xxx'); 檢查的屬性，是否為「物件本身」所有; 
+> A instanceof B , 'xxx' in A -- 透過「原型鏈」檢查屬性, A.hasOwnProperty('xxx') -- 檢查的屬性，是否為「物件本身」所有; 
 
 > Object.prototype.hasOwnProperty(), Object.prototype.toString(), Object.prototype.valueOf()
 
@@ -120,7 +120,40 @@
 
 > 當物件實體與它的原型同時擁有同樣的屬性或方法時，會優先存取自己的屬性或方法，如果沒有才會再順著原型鏈向上尋找。
 
+16. java是靜態作用域 --[1](https://github.com/aszx87410/blog/issues/35)
 
+```javascript
+var a = 100
+function echo() {
+  console.log(a) // 100 or 200?
+}
+  
+function test() {
+  var a = 200
+  echo()
+}
+  
+test() //100
+```
+
+> but...
+
+```javascript
+var foo = 'foo';
+var obj = {
+  foo: 'foo in Object'
+};
+
+var sayFoo = function() {
+  console.log( this.foo );
+};
+
+obj.sayFoo = sayFoo;
+
+obj.sayFoo();   // 'foo in Object'
+sayFoo();       // 'foo'
+```
+> 在物件中的this會改變指向方向。
 
 ### moment.js
 
