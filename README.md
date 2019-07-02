@@ -120,7 +120,7 @@
 
 > 當物件實體與它的原型同時擁有同樣的屬性或方法時，會優先存取自己的屬性或方法，如果沒有才會再順著原型鏈向上尋找。
 
-16. java是靜態作用域 --[1](https://github.com/aszx87410/blog/issues/35)
+16. javascript是靜態作用域 --[1](https://github.com/aszx87410/blog/issues/35)
 
 ```javascript
 var a = 100
@@ -136,7 +136,7 @@ function test() {
 test() //100
 ```
 
-> but...
+> but... [2](https://kuro.tw/posts/2017/10/12/What-is-THIS-in-JavaScript-%E4%B8%8A/)
 
 ```javascript
 var foo = 'foo';
