@@ -155,6 +155,28 @@ sayFoo();       // 'foo'
 ```
 > 在物件中的this會改變指向方向。
 
+17. this的scope
+
+> JavaScript 中，用來切分變數的最小作用範圍 (scope)，也就是我們說的有效範圍的單位，就是 function。
+
+> 當沒有特定指明 this 的情況下，預設綁定 (Default Binding) this 為 「全域物件」，也就是 window。 (但是嚴格模式底下，會禁止this自動成為全域物件)
+
+18. class & function [1](https://overreacted.io/zh-hant/how-does-react-tell-a-class-from-a-function/)
+
+```
+// 只是個函式
+function Person(name) {
+  this.name = name;
+}
+
+var fred = new Person('Fred'); // ✅ Person {name: 'Fred'}
+var george = Person('George'); // 🔴 不行
+```
+
+>藉由在呼叫前增加 new，我們告訴 JavaScript 說：「嘿 JavaScript，我知道 Person 只是一個函式，但讓我們假裝它就像一個類別的建構子，創建一個 {} 物件並且將 Person 函式內部的 this 指向這個物件，這樣我就能設置 this.name 之類的東西了。然後把這個物件回傳給我。」
+
+### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
+
 ### moment.js
 
 1. moment.js 函數整理(中文) --[1](https://my.oschina.net/Tsybius2014/blog/724293) 中文文檔--[2](https://itbilu.com/nodejs/npm/VkCir3rge.html)
