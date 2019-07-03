@@ -163,7 +163,7 @@ sayFoo();       // 'foo'
 
 18. class & function [1](https://overreacted.io/zh-hant/how-does-react-tell-a-class-from-a-function/)
 
-```
+```javascript
 // 只是個函式
 function Person(name) {
   this.name = name;
@@ -173,7 +173,48 @@ var fred = new Person('Fred'); // ✅ Person {name: 'Fred'}
 var george = Person('George'); // 🔴 不行
 ```
 
->藉由在呼叫前增加 new，我們告訴 JavaScript 說：「嘿 JavaScript，我知道 Person 只是一個函式，但讓我們假裝它就像一個類別的建構子，創建一個 {} 物件並且將 Person 函式內部的 this 指向這個物件，這樣我就能設置 this.name 之類的東西了。然後把這個物件回傳給我。」
+> 藉由在呼叫前增加 new，我們告訴 JavaScript 說：「嘿 JavaScript，我知道 Person 只是一個函式，但讓我們假裝它就像一個類別的建構子，創建一個 {} 物件並且將 Person 函式內部的 this 指向這個物件，這樣我就能設置 this.name 之類的東西了。然後把這個物件回傳給我。」
+
+> 類別語法讓我們能表示：「這不只是一個函式 —— 他是一個類別，而且有建構子。」
+
+```javascript
+let fred = new Person('Fred');
+// ✅  如果 Person 是一個函式： 沒問題
+// ✅  如果 Person 是一個類別： 也沒問題
+
+let george = Person('George'); // 我們忘記 `new` 了
+// 😳 如果 Person 是一個像建構子的函式：令人困惑的行為 (關鍵字:像建構子的函數，別混淆一般有return的函數了)
+// 🔴 如果 Person 是一個類別：直接失敗
+```
+> 對於函數，需要判斷使用new的時機，有些狀況不適合，如箭頭函數、一般函數
+
+```javascript
+const Person = (name) => {
+  // 🔴 這樣不合理！ 箭頭函數並沒有自己的this
+  this.name = name;
+}
+
+--------
+
+function Greeting() {
+  return 'Hello';
+}
+
+Greeting(); // ✅ 'Hello'
+new Greeting(); // 😳 Greeting {}
+```
+
+> JavaScript 還允許被 new 呼叫的函式藉由回傳其他物件來覆蓋它的回傳值，如果一個函式的回傳值不是一個物件， new 會完全忽略它，就是說如果你回傳字串或是數字，它會像根本沒有回傳一樣。
+
+```javascript 
+function Answer() {
+  return 42;
+}
+
+Answer(); // ✅ 42
+new Answer(); // 😳 Answer {}
+```
+
 
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
 
