@@ -104,6 +104,8 @@
 
 13. map & reduce --[1](http://fred-zone.blogspot.com/2017/01/javascript-mapreduce.html)
 
+> 利用 .reduce() 進行陣列扁平化
+
 14. Property descriptor --[1](https://ithelp.ithome.com.tw/articles/10193747)
 
 > 屬性描述器:value, writable, enumerable, configurable, get, set。
@@ -215,6 +217,37 @@ Answer(); // ✅ 42
 new Answer(); // 😳 Answer {}
 ```
 
+19. anonymous function --[1](https://www.jianshu.com/p/11bfaff98d3c)
+
+> javascript 函數中自帶關鍵字 arguments，它只在函數內不起作用，並且永遠指向當前函數的調用者傳入的所有參數。arguments 類似 Array 但它不是一個 Array
+
+```javascript
+var x = function(arguments1,arguments2){
+	return arguments1;
+}
+
+console.log(x(1,2)) //1
+
+
+
+var y = function(){
+	return arguments; //自帶關鍵字
+}
+
+console.log(y(1,2)) //arguments=[1,2]
+```
+
+20. JavaScript <b>this</b> [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/this%20%26%20object%20prototypes/ch2.md)
+
+> 默認綁定(Default Binding)
+
+> 隱含綁定(Implicit Binding)
+
+>> 隱含丟失(Implicitly Lost)
+
+> 明確綁定(Explicit Binding)
+
+>> 硬綁定(Hard Binding)
 
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
 
