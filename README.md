@@ -424,7 +424,56 @@ console.log( b ); // 5
 >1. 一個全新的對象會憑空創建（就是被構建）
 >2. 這個新構建的對象會被接入原形鏈（[[Prototype]]-linked）
 >3. 這個新構建的對象被設置為函數調用的 this 綁定
->4. 除非函數返回一個它自己的其他 對象，否則這個被 new 調用的函數將 自動 返回這個新構建的對象。
+>4. 除非函數返回一個它自己的其他對象，否則這個被 new 調用的函數將`自動`返回這個新構建的對象。(意即函數中return其他物件，若為非物件則回傳{})
+
+```javascript
+function foo(a) {
+	this.a = a;
+}
+
+var bar = new foo( 2 );
+console.log( bar.a ); // 2
+```
+
+21. 判定`this`，new綁定 > 明確綁定 >　隱含綁定　> 默認綁定
+
+* 函數是通過 new 被調用的嗎（new 綁定）？如果是，this 就是新構建的對象。
+
+> var bar = new foo()
+
+* 函數是通過 call 或 apply 被調用（明確綁定），甚至是隱藏在 bind 硬綁定 之中嗎？如果是，this 就是那個被明確指定的對象。
+
+> var bar = foo.call( obj2 )
+
+* 函數是通過環境對象（也稱為擁有者或容器對象）被調用的嗎（隱含綁定）？如果是，this 就是那個環境對象。
+
+> var bar = obj1.foo()
+
+* 否則，使用默認的 this（默認綁定）。如果在 strict mode 下，就是 undefined，否則是 global 對象。
+
+> var bar = foo()
+
+22. `this`的使用原則
+
+
+```javascript
+function foo() {
+	var self = this; // 词法上捕获 `this`
+	setTimeout( function(){
+		console.log( self.a );
+	}, 100 );
+}
+
+var obj = {
+	a: 2
+};
+
+foo.call( obj ); // 2
+```
+> 對於不想使用bind(...)，self=this和箭頭函數都是個看起來不錯的"解決方案"，但實質上逃避了this而非理解與接受它，為此有兩個選擇。。
+> 1. 僅使用詞法作用域並忘掉虛偽的this風格代碼。
+> 2. 完全接受this風格機制，包括在必要的時候使用bind(...)，並嘗試避開 self = this 和箭頭函數的 "詞法this"技巧。
+> 雖說我個人認為self = this的確不是個很好的程式寫法，但在react中使用axios老是會用到(意即在promise中要使用this的東西如setState)，或許在這樣的情況下會是不錯的解法，就我個人而言，程式並沒有變得更加複雜難明。
 
 
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
