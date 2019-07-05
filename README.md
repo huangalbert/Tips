@@ -271,7 +271,7 @@ var obj1 = {
 obj1.obj2.foo(); // 42
 ```
 
-* 隱含丟失(Implicitly Lost) => this 綁定最常讓人沮喪的事情之一，就是當一個`隱含綁定`丟失了它的綁定，這通常意味著它會退回到`默認綁定`
+> 隱含丟失(Implicitly Lost) => this 綁定最常讓人沮喪的事情之一，就是當一個`隱含綁定`丟失了它的綁定，這通常意味著它會退回到`默認綁定`
 
 ```javascript
 function foo() {
@@ -418,6 +418,14 @@ var bar = bind( foo, obj );
 var b = bar( 3 ); // 2 3
 console.log( b ); // 5
 ```
+
+* `new` 綁定(new binding)
+
+>一個全新的對象會憑空創建（就是被構建）
+>這個新構建的對象會被接入原形鏈（[[Prototype]]-linked）
+>這個新構建的對象被設置為函數調用的 this 綁定
+>除非函數返回一個它自己的其他 對象，否則這個被 new 調用的函數將 自動 返回這個新構建的對象。
+
 
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
 
