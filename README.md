@@ -421,10 +421,10 @@ console.log( b ); // 5
 
 * `new` 綁定(new binding)
 
->一個全新的對象會憑空創建（就是被構建）
->這個新構建的對象會被接入原形鏈（[[Prototype]]-linked）
->這個新構建的對象被設置為函數調用的 this 綁定
->除非函數返回一個它自己的其他 對象，否則這個被 new 調用的函數將 自動 返回這個新構建的對象。
+>1. 一個全新的對象會憑空創建（就是被構建）
+>2. 這個新構建的對象會被接入原形鏈（[[Prototype]]-linked）
+>3. 這個新構建的對象被設置為函數調用的 this 綁定
+>4. 除非函數返回一個它自己的其他 對象，否則這個被 new 調用的函數將 自動 返回這個新構建的對象。
 
 
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
