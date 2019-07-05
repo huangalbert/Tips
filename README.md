@@ -313,9 +313,111 @@ doFoo( obj.foo ); // "oops, global"
 ```
 > 使用回調函數有一樣的結果
 
+```javascript
+function foo() {
+	console.log( this.a );
+}
+
+var obj = {
+	a: 2,
+	foo: foo
+};
+
+var a = "oops, global"; // `a` 也是一个全局对象的属性
+
+setTimeout( obj.foo, 100 ); // "oops, global"
+```
+> 套用上setTimeout()，即便裡面是使用obj.foo，依舊是會導向全域(implicitly loss)
+
+> 函數丟掉他們的`this`是非常常見的，必須明確的知道函數的調用點，才能夠知道this指向何處，若是想要固定函數this的指向，可以使用明確綁定(call,apply,bind)，有時候箭頭函數的特性也可拿來使用
+
 * 明確綁定(Explicit Binding)
 
-> 硬綁定(Hard Binding)
+```javascript
+function foo() {
+	console.log( this.a );
+}
+
+var obj = {
+	a: 2
+};
+
+foo.call( obj ); // 2
+```
+
+>可以參考 [iT邦幫忙](https://ithelp.ithome.com.tw/articles/10195896)
+
+> 硬綁定(Hard Binding)，明確綁定的變種技巧
+
+```javascript
+//技巧一
+
+function foo() {
+	console.log( this.a );
+}
+
+var obj = {
+	a: 2
+};
+
+var bar = function() {
+	foo.call( obj );
+};
+
+bar(); // 2
+setTimeout( bar, 100 ); // 2
+
+// `bar` 将 `foo` 的 `this` 硬绑定到 `obj`
+// 所以它不可以被覆盖
+bar.call( window ); // 2
+```
+> 我們創建了一個函數 bar()，在它的內部手動調用 foo.call(obj)，由此強制 this 綁定到 obj 並調用 foo。無論你過後怎樣調用函數 bar，它總是手動使用 obj 調用 foo。這種綁定即明確又堅定，所以我們稱之為`硬綁定（hard binding）`
+
+```javascript
+//技巧二，參數代入
+
+function foo(something) {
+	console.log( this.a, something );
+	return this.a + something;
+}
+
+var obj = {
+	a: 2
+};
+
+var bar = function() {
+	return foo.apply( obj, arguments );
+};
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+```
+> ES5新增的`bind()`實作
+
+```javascript
+//bind()實作，base on call or apply
+
+function foo(something) {
+	console.log( this.a, something );
+	return this.a + something;
+}
+
+// 简单的 `bind` 帮助函数
+function bind(fn, obj) {
+	return function() {
+		return fn.apply( obj, arguments );
+	};
+}
+
+var obj = {
+	a: 2
+};
+
+var bar = bind( foo, obj );
+
+var b = bar( 3 ); // 2 3
+console.log( b ); // 5
+```
 
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
 
