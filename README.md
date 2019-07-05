@@ -239,7 +239,7 @@ console.log(y(1,2)) //arguments=[1,2]
 
 20. JavaScript <b>this</b> ，了解call-site(調用點)，對於理解this的指向相當重要。  [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/this%20%26%20object%20prototypes/ch2.md)
 
-> 默認綁定(Default Binding) =>　this 實施了`默認綁定`，所以使 this 指向了全局對象
+* 默認綁定(Default Binding) =>　this 實施了`默認綁定`，所以使 this 指向了全局對象
 
 ```javascript
 function foo() {
@@ -251,13 +251,71 @@ var a = 2;
 foo(); // 2
 ```
 
-> 隱含綁定(Implicit Binding)
+* 隱含綁定(Implicit Binding) => 調用點是否有一個環境對象（context object），也稱為擁有者（owning）或容器（containing）對象(object)
 
->> 隱含丟失(Implicitly Lost)
+```javascript
+function foo() {
+	console.log( this.a );
+}
 
-> 明確綁定(Explicit Binding)
+var obj2 = {
+	a: 42,
+	foo: foo
+};
 
->> 硬綁定(Hard Binding)
+var obj1 = {
+	a: 2,
+	obj2: obj2
+};
+
+obj1.obj2.foo(); // 42
+```
+
+* 隱含丟失(Implicitly Lost) => this 綁定最常讓人沮喪的事情之一，就是當一個`隱含綁定`丟失了它的綁定，這通常意味著它會退回到`默認綁定`
+
+```javascript
+function foo() {
+	console.log( this.a );
+}
+
+var obj = {
+	a: 2,
+	foo: foo
+};
+
+var bar = obj.foo; // 函数引用！
+
+var a = "oops, global"; // `a` 也是一个全局对象的属性
+
+bar(); // "oops, global"
+```
+> 盡管 bar 似乎是 obj.foo 的引用，但實際上它只是另一個 foo 本身的引用而已
+
+```javascript
+function foo() {
+	console.log( this.a );
+}
+
+function doFoo(fn) {
+	// `fn` 只不过 `foo` 的另一个引用
+
+	fn(); // <-- 调用点!
+}
+
+var obj = {
+	a: 2,
+	foo: foo
+};
+
+var a = "oops, global"; // `a` 也是一个全局对象的属性
+
+doFoo( obj.foo ); // "oops, global"
+```
+> 使用回調函數有一樣的結果
+
+* 明確綁定(Explicit Binding)
+
+> 硬綁定(Hard Binding)
 
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
 
