@@ -237,9 +237,19 @@ var y = function(){
 console.log(y(1,2)) //arguments=[1,2]
 ```
 
-20. JavaScript <b>this</b> [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/this%20%26%20object%20prototypes/ch2.md)
+20. JavaScript <b>this</b> ，了解call-site(調用點)，對於理解this的指向相當重要。  [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/this%20%26%20object%20prototypes/ch2.md)
 
-> 默認綁定(Default Binding)
+> 默認綁定(Default Binding) =>　this 實施了`默認綁定`，所以使 this 指向了全局對象
+
+```javascript
+function foo() {
+	console.log( this.a );
+}
+
+var a = 2;
+
+foo(); // 2
+```
 
 > 隱含綁定(Implicit Binding)
 
