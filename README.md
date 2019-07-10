@@ -62,6 +62,8 @@
 
 > 把函數當成另一個函數的參數，主要作用在制定函數執行順序，徹底理解文章中舉的例子。
 
+> 有趣的題目變化--[1](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/43)
+
 3. 同步(Synchronous) 與 非同步(Asynchronous)--[1](https://ithelp.ithome.com.tw/articles/10194569)
 
 > Callback Hell : 大量使用非同步且又想要依照固定的順序來執行時， 就可能會出現
