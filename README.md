@@ -478,6 +478,64 @@ foo.call( obj ); // 2
 > 
 > 雖說我個人認為self = this的確不是個很好的程式寫法，但在react中使用axios老是會用到(意即在promise中要使用this的東西如setState)，或許在這樣的情況下會是不錯的解法，就我個人而言，程式並沒有變得更加複雜難明。
 
+23. YDKJS-Object
+
+> 一個常見的錯誤判斷是"Javascript中的一切都是對象" (六個主要類型,null算一個)
+
+>Javascript 會在必要時強制將基本類型如 "string" 轉換為 對象類型 "String"，一般都建議不需要去new出一個基本類型，如下範例，string自帶有length或charAt()
+
+
+```javascript
+var strPrimitive = "I am a string";
+
+console.log( strPrimitive.length );			// 13
+
+console.log( strPrimitive.charAt( 3 ) );	// "m"
+
+```
+24. YDKJS-複製對象 ：淺(Shallow)拷貝 OR 深(Deep)拷貝
+
+> 須注意是否為淺拷貝，如：var newObj = Object.assign( {}, myObject );
+
+```javascript
+function anotherFunction() { /*..*/ }
+
+var anotherObject = {
+	c: true
+};
+
+var anotherArray = [];
+
+var myObject = {
+	a: 2,
+	b: anotherObject,	// 引用，不是拷贝!
+	c: anotherArray,	// 又一个引用!
+	d: anotherFunction
+};
+
+anotherArray.push( anotherObject, myObject );
+```
+
+
+
+> 如何完成深拷貝
+> 方法一：使用JSON
+
+```javascript
+
+var newObj = JSON.parse( JSON.stringify( someObj ) );
+
+```
+
+> 方法二：使用Spread operation
+
+```javascript
+
+var newObj = {...someObj}
+
+```
+
+
 
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
 
