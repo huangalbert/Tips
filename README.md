@@ -38,6 +38,11 @@
 
 > 受控組件即是指使用setState去監控擁有輸出輸入功能的element，如:select, textarea, input等等，功能較為強大，能夠做到即時驗證、強迫改變資料輸入型態、autocomplete等等，
 非受控組件與傳統的HTML element有些相像，相對受控組件而言，程式碼實現較為精簡，但能延伸出來的變化也較少。--[1](https://react.docschina.org/docs/forms.html) --[2](https://react.docschina.org/docs/uncontrolled-components.html)
+
+9. React Lifecycle
+
+<img src="./img/react-life.png" alt="react-lifecycle">
+
 ## React Router
 1. 頁面傳值有三個方法： 1. props.params, 2. query, 3. state --[1](https://blog.csdn.net/qq_23158083/article/details/68488831)
 
