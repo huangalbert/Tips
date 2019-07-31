@@ -39,7 +39,7 @@
 > 受控組件即是指使用setState去監控擁有輸出輸入功能的element，如:select, textarea, input等等，功能較為強大，能夠做到即時驗證、強迫改變資料輸入型態、autocomplete等等，
 非受控組件與傳統的HTML element有些相像，相對受控組件而言，程式碼實現較為精簡，但能延伸出來的變化也較少。--[1](https://react.docschina.org/docs/forms.html) --[2](https://react.docschina.org/docs/uncontrolled-components.html)
 
-9. React Lifecycle
+9. React Lifecycle -- [1](https://iandays.com/2018/07/27/reactlife/index.html)
 
 <img src="./img/react-life.png" alt="react-lifecycle">
 
@@ -523,7 +523,7 @@ anotherArray.push( anotherObject, myObject );
 
 
 
-> 如何完成深拷貝
+> 如何完成拷貝
 > 方法一：使用JSON
 
 ```javascript
@@ -539,6 +539,8 @@ var newObj = JSON.parse( JSON.stringify( someObj ) );
 var newObj = {...someObj}
 
 ```
+
+> 需要注意的地方，那就是 spread operator 只會複製第一層的資料而已，它並不是 deep clone
 
 
 
