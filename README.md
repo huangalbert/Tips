@@ -14,7 +14,8 @@
 
 3. 由於Immutable data structures的關係，使用PureComponent的shallowEqual可能會出錯(不如預期)，所以在setState之前，不能直接引用props或state，必須創建一個新的物件 -- [1](https://blog.techbridge.cc/2018/01/05/react-render-optimization/)
 
-> 習慣必須養成不要直接調用props、state，需另創一個物件，如:const arr = [...this.state.array]
+> 習慣必須養成不要直接調用props、state，需另創一個物件，如:const arr = [...this.state.array]。
+> 必須如此的原因，是因為無論在shouldComponentUpdate 或者 virtualDOM的前後樹判斷時，很多時候是去比較物件前後是否相同。
 
 4. 在react中如果function想要傳遞參數，有兩種方法 [1]onClick={()=>this.myFunction(params)}, [2]onClick={this.myFunction.bind(this,params)} --[詳解arrow function in react](https://frontarm.com/james-k-nelson/when-to-use-arrow-functions/)
 
@@ -42,6 +43,8 @@
 9. React Lifecycle -- [1](https://iandays.com/2018/07/27/reactlife/index.html)
 
 <img src="./img/react-life.png" alt="react-lifecycle">
+
+
 
 ## React Router
 1. 頁面傳值有三個方法： 1. props.params, 2. query, 3. state --[1](https://blog.csdn.net/qq_23158083/article/details/68488831)
@@ -524,7 +527,7 @@ anotherArray.push( anotherObject, myObject );
 
 
 > 如何完成拷貝
-> 方法一：使用JSON
+> 方法一：使用JSON (深)
 
 ```javascript
 
@@ -532,7 +535,7 @@ var newObj = JSON.parse( JSON.stringify( someObj ) );
 
 ```
 
-> 方法二：使用Spread operation
+> 方法二：使用Spread operation (淺)
 
 ```javascript
 
@@ -542,7 +545,15 @@ var newObj = {...someObj}
 
 > 需要注意的地方，那就是 spread operator 只會複製第一層的資料而已，它並不是 deep clone
 
+> 方法三：使用Object.assign( {}, myObject ) (淺)
 
+25. Object literals --[1](https://pjchender.blogspot.com/2017/01/es6-object-literal-extension.html)
+
+```javascript
+let website = "pjchender";
+let obj = {website};
+console.log(obj);    //[Object]{website: "pjchender"}
+```
 
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
 
