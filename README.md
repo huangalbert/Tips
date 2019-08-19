@@ -52,7 +52,7 @@
 > 文章說明query方法類似get，會併接url，而state類似post，不會以明文傳遞，但不知原因為何，實際使用兩者的url都沒有顯示，還是推薦使用state。
 
 ## Axios
-1. 在IE中使用axios，安裝babel-polyfill，在import時必須擺在第一個。
+1. 在IE中使用axios，安裝babel-polyfill，在import時必須擺在第一個。[1](https://babeljs.io/docs/en/6.26.3/babel-polyfill)
 
 > 由於IE沒支援promise語法，需要使用額外套件編譯。
 
