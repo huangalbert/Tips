@@ -4,6 +4,7 @@
 
 
 ## React Component
+----------------------
 1. 程式碼 .bind(this)優化，使用arrow function 取代 -- [1](https://segmentfault.com/q/1010000017412221) , [2](https://carsonwah.github.io/react-native-arrow-function-and-this.html) 
 
 > ant design 的範例都是使用這種寫法
@@ -52,6 +53,7 @@
 > 文章說明query方法類似get，會併接url，而state類似post，不會以明文傳遞，但不知原因為何，實際使用兩者的url都沒有顯示，還是推薦使用state。
 
 ## Axios
+-------------------
 1. 在IE中使用axios，安裝babel-polyfill，在import時必須擺在第一個。[1](https://babeljs.io/docs/en/6.26.3/babel-polyfill)
 
 > 由於IE沒支援promise語法，需要使用額外套件編譯。
@@ -60,8 +62,12 @@
 
 > axios 文檔中寫道: axios.get(url[, config]) , axios.post(url[, data[, config]])，在post的config須注意是第二個參數。
 
-## javascript
+3. 在axios中想要取得更多得error資訊，在官方文檔中說明滿清楚的[1](https://github.com/axios/axios#handling-errors)
 
+> 可以用於catch不同的error以做出不同的動作，如network error, time out 等等......。
+
+## javascript
+---------------
 1. 提升(Hoisting)，若是某行程式碼需要取得的變數宣告在其後執行，編譯器會自動幫程式碼在最上頭加上var x，此時值為undefined，直到程式執行給值那行--[1](https://ithelp.ithome.com.tw/articles/10191549)
 
 > 函數物件同樣會被hoisting, 如: var x = function(){...}, 單純函數不會。
@@ -555,9 +561,66 @@ let obj = {website};
 console.log(obj);    //[Object]{website: "pjchender"}
 ```
 
+### Prototype
+------------------
+#### constructor
+
+```javascript
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+  
+Person.prototype.log = function () {
+  console.log(this.name + ', age:' + this.age);
+}
+  
+var nick = new Person('nick', 18);
+  
+// 這段是要讓大家知道，這邊其實是往原型鍊的上面去找
+console.log(nick.constructor === Person); // true
+console.log(nick.hasOwnProperty('constructor')); // false
+  
+// Person 的 constructor 就是 Person
+console.log(Person.prototype.constructor === Person); // true
+console.log(Person.prototype.hasOwnProperty('constructor')); // true
+```
+
+
+> 理解如下變化-[1](https://juejin.im/post/5c19c1b6e51d451d1e06c163)
+
+```javascript
+function F() {}
+function O() {}
+
+O.prototype = new F();
+var obj = new O();
+
+console.log(obj instanceof O); // true
+console.log(obj instanceof F); // true
+console.log(obj.__proto__ === O.prototype); // true
+console.log(obj.__proto__.__proto__ === F.prototype); // true
+
+//更改了順序後結果大不相同
+
+function F() {}
+function O() {}
+
+var obj = new O();
+O.prototype = new F();
+
+
+console.log(obj instanceof O); // false
+console.log(obj instanceof F); // false
+console.log(obj.__proto__ === O.prototype); // false
+console.log(obj.__proto__.__proto__ === F.prototype); // false
+
+```
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
+-----------------
 
 ### moment.js
+-----------------
 
 1. moment.js 函數整理(中文) --[1](https://my.oschina.net/Tsybius2014/blog/724293) 中文文檔--[2](https://itbilu.com/nodejs/npm/VkCir3rge.html)
 
