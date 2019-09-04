@@ -561,9 +561,11 @@ let obj = {website};
 console.log(obj);    //[Object]{website: "pjchender"}
 ```
 
-### Prototype
+### prototype、__proto__、constructor 
 
-#### constructor
+#### constructor [huli](https://github.com/aszx87410/blog/issues/18)
+
+
 
 ```javascript
 function Person(name, age) {
@@ -584,6 +586,48 @@ console.log(nick.hasOwnProperty('constructor')); // false
 // Person 的 constructor 就是 Person
 console.log(Person.prototype.constructor === Person); // true
 console.log(Person.prototype.hasOwnProperty('constructor')); // true
+```
+> A.prototype.constructor === A，把 A 用 Function, Person, Object 之類的值帶進去都成立。
+
+
+#### new [huli](https://github.com/aszx87410/blog/issues/18)
+
+有了原型鍊的概念之後，就不難理解new這個關鍵字背後會做的事情是什麼。
+
+假設現在有一行程式碼是：var nick = new Person('nick');，那它有以下幾件事情要做：
+
+	1. 創出一個新的 object，我們叫它 O
+	2. 把 O 的 __proto__ 指向 Person 的 prototype，才能繼承原型鍊
+	3. 拿 O 當作 context，呼叫 Person 這個建構函式
+	4. 回傳 O
+
+我們可以寫一段程式碼來模擬這個情形：
+
+```javascript
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+  
+Person.prototype.log = function () {
+  console.log(this.name + ', age:' + this.age);
+}
+  
+function newObj(Constructor, arguments) {
+  var o = new Object();
+  
+  // 讓 o 繼承原型鍊
+  o.__proto__ = Constructor.prototype;
+  
+  // 執行建構函式
+  Constructor.apply(o, arguments);
+  
+  // 回傳建立好的物件
+  return o;
+}
+  
+var nick = newObj(Person, ['nick', 18]);
+nick.log(); // nick, age:18
 ```
 
 
