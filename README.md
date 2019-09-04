@@ -4,7 +4,7 @@
 
 
 ## React Component
-----------------------
+
 1. 程式碼 .bind(this)優化，使用arrow function 取代 -- [1](https://segmentfault.com/q/1010000017412221) , [2](https://carsonwah.github.io/react-native-arrow-function-and-this.html) 
 
 > ant design 的範例都是使用這種寫法
@@ -53,7 +53,7 @@
 > 文章說明query方法類似get，會併接url，而state類似post，不會以明文傳遞，但不知原因為何，實際使用兩者的url都沒有顯示，還是推薦使用state。
 
 ## Axios
--------------------
+
 1. 在IE中使用axios，安裝babel-polyfill，在import時必須擺在第一個。[1](https://babeljs.io/docs/en/6.26.3/babel-polyfill)
 
 > 由於IE沒支援promise語法，需要使用額外套件編譯。
@@ -67,7 +67,7 @@
 > 可以用於catch不同的error以做出不同的動作，如network error, time out 等等......。
 
 ## javascript
----------------
+
 1. 提升(Hoisting)，若是某行程式碼需要取得的變數宣告在其後執行，編譯器會自動幫程式碼在最上頭加上var x，此時值為undefined，直到程式執行給值那行--[1](https://ithelp.ithome.com.tw/articles/10191549)
 
 > 函數物件同樣會被hoisting, 如: var x = function(){...}, 單純函數不會。
@@ -562,7 +562,7 @@ console.log(obj);    //[Object]{website: "pjchender"}
 ```
 
 ### Prototype
-------------------
+
 #### constructor
 
 ```javascript
@@ -617,10 +617,8 @@ console.log(obj.__proto__.__proto__ === F.prototype); // false
 
 ```
 ### [YDKJS](https://github.com/getify/You-Dont-Know-JS/blob/1ed-zh-CN/README.md) 
------------------
 
 ### moment.js
------------------
 
 1. moment.js 函數整理(中文) --[1](https://my.oschina.net/Tsybius2014/blog/724293) 中文文檔--[2](https://itbilu.com/nodejs/npm/VkCir3rge.html)
 
