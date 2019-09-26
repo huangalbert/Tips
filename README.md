@@ -52,6 +52,10 @@
 
 > 文章說明query方法類似get，會併接url，而state類似post，不會以明文傳遞，但不知原因為何，實際使用兩者的url都沒有顯示，還是推薦使用state。
 
+2. [淺談新手在學習 SPA 時的常見問題：以 Router 為例 by Huli](https://blog.huli.tw/2019/09/18/spa-common-problem-about-router/?fbclid=IwAR2h81Zb-Nl-kkM1WfI1cy1lfbyRKdwNmSHl0sBUr94gHpwrr3IzfJK2bkM)
+
+> 前後端的 router 實作差異
+
 ## Axios
 
 1. 在IE中使用axios，安裝babel-polyfill，在import時必須擺在第一個。[1](https://babeljs.io/docs/en/6.26.3/babel-polyfill)
